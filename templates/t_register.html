@@ -1,0 +1,50 @@
+<html> 
+  <form method="post">
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="student_username" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="student_pw" required>
+
+    </div>
+    <div class="container">
+      <label for="fname"><b>First Name</b></label>
+      <input type="text" placeholder="First Name" name="student_first_name" required>
+
+      <label for="lname"><b>Last Name</b></label>
+      <input type="text" placeholder="Last Name" name="student_last_name" required>
+
+    </div>
+    <div class="container">
+      <input type="text" placeholder="Email Address" name="student_email" required>
+
+      <input type="text" placeholder="Phone Number" name="student_phone" required>
+
+    </div>
+    <div class="container">
+      <input type="text" placeholder="High School Name" name="student_school" required>
+
+      <input type="text" placeholder="Grade Level" name="student_grade" required>
+
+    </div>
+    <div class="container">
+      <label><b>Address:</b></label>
+      <input type="text" placeholder="Street" name="student_street" required>
+
+      <input type="text" placeholder="City" name="student_city" required>
+
+      <input type="text" placeholder="State" name="student_state" required>
+
+      <input type="text" placeholder="Zip" name="student_zip" required>
+    </div>
+    <div>
+      <input type="text" placeholder="Courses" name="student_courses" required>
+
+    <button type="submit">Register</button>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <span class="psw"><p>{{error_msg}}</p></span>
+    </div>
+  </form>
+</html
