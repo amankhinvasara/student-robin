@@ -1,50 +1,408 @@
-<html> 
-  <form method="post">
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="student_username" required>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Student Gateway — Robin Education</title>
+	<link rel="icon" type="image/png" href="C:/Users/arnav_000/Downloads/robin_logo.png">
+	<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Almarai&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			text-decoration: none;
+		}
+		.header{
+			width: 100%;
+			height: 120px;
+			display: block;
+			background-color: #dc70fb;
+		}
+		.logo{
+			height: 100%;
+			display: table;
+			float: left;
+		}
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="student_pw" required>
+		.logo img{
+			position: relative;
+			top: 20px;
+			left: 40px;
+			width: 70px;
+			height: 70px;
+			display: table-cell;
+		}
 
-    </div>
-    <div class="container">
-      <label for="fname"><b>First Name</b></label>
-      <input type="text" placeholder="First Name" name="student_first_name" required>
+		.title{
+			position: relative;
+			height: 100%;
+			display: table;
+			float: left;
+			font-size: 35px;
+			top: 40px;
+			left: 70px;
+			color: white;
+			font-weight: bold;
+			letter-spacing: 1px;
+			font-family: 'Almarai', sans-serif;
 
-      <label for="lname"><b>Last Name</b></label>
-      <input type="text" placeholder="Last Name" name="student_last_name" required>
+		}
+		.nav{
+			float: right;
+			height: 100%;
+		}
+		.nav a{
+			height: 100%;
+			display: table;
+			float: left;
+			padding: 0px 20px;
 
-    </div>
-    <div class="container">
-      <input type="text" placeholder="Email Address" name="student_email" required>
+		}
+		.nav a li{
+			display: table-cell;
+			vertical-align: middle;
+		}
 
-      <input type="text" placeholder="Phone Number" name="student_phone" required>
+		.nav a:last-child{
+			padding-right: 100px;
+		}
+		.nav a li div{
+			background-color: white;
+			padding: 12px 15px;
+			border-radius: 6%;
+			color: darkviolet;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: bold;
+		}
 
-    </div>
-    <div class="container">
-      <input type="text" placeholder="High School Name" name="student_school" required>
+		.nav a li div:hover{
+			background-color: gainsboro;
+		}
+		h2{
+			text-align: center;
+			font-size: 50px;
+			font-family: arial;
+		}
 
-      <input type="text" placeholder="Grade Level" name="student_grade" required>
+		h3{
+			text-align: center;
+			font-size: 30px;
+			font-family: arial;
+		}
 
-    </div>
-    <div class="container">
-      <label><b>Address:</b></label>
-      <input type="text" placeholder="Street" name="student_street" required>
+		.register_form{
+			padding: 10px 10px;
+			position: relative;
+			height: 650px;
+			width: 500px;
+			border: 2px solid #dc70fb;
+			left: 422px;
+			border-radius: 5%;
+			font-family: 'Montserrat', sans-serif;
 
-      <input type="text" placeholder="City" name="student_city" required>
+		}
+		hr{
+			position: relative;
+			left: 473px;
+			width: 400px;
+		}
+		.input_textbox{
+			border: none;
+			border-bottom: 2px solid #dc70fb;
+			outline: none;
+			height: 30px;
+		}
+		.input_textbox:hover{
+			background-color: gainsboro;
+		}
+		.input_textbox::placeholder{
+			color: black;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: bold;
+		}
+		.input_textbox:focus{
+			background-color: lavender;
+			opacity: 0.65;
+		}
+		#num1{
+			position: relative;
+			top: 35px;
+			left: 42px;
+		}
+		#num2{
+			position: relative;
+			top: 3px;
+			left: 275px;
+		}
+		#num3{
+			position: relative;
+			top: 38px;
+			left: 42px;
+		}
+		#num4{
+			position: relative;
+			top: 6px;
+			left: 275px;
+		}
+		#num5{
+			position: relative;
+			top: 70px;
+			left: 42px;
+		}
+		#num6{
+			position: relative;
+			top: 38px;
+			left: 275px;
+		}
+		#num7{
+			position: relative;
+			top: 73px;
+			left: 42px;
+			width: 174px;
+		}
+		#num8{
+			position: relative;
+			top: 41px;
+			left: 275px;
+		}
+		#num9{
+			position: relative;
+			top: 108px;
+			left: 42px;
+		}
+		#num10{
+			position: relative;
+			top: 76px;
+			left: 275px;
+		}
+		#num11{
+			width: 410px;
+		}
+		#num11::placeholder{
+			text-align: center;
+		}
+		.courses{
+			position: relative;
+			top: 115px;
+			right: 5px;
+			text-align: center;
+		}
+		.courses form{
+			margin-top: 15px;
+		}
+		#button_form{
+			position: relative;
+			width: 200px;
+			height: 50px;
+			top: 168px;
+			left: 150px;
+			background-color: #dc70fb;
+			border: 3px solid black;
+			border-radius: 10%;
+			font-family:'Montserrat', sans-serif;
+			font-weight: bold;
+			font-size: 22px;
+		}
+		#button_form:hover{
+			background-color: lavender;
+			border: 4px solid #dc70fb;
+		}
+		.fieldset_drop{
+			padding-top: 5px;
+			width: 170px;
+			border: none;
+			border-bottom: 2px solid #dc70fb;
+			height: 25px;
+		}
+		fieldset:hover{
+			background-color: gainsboro;
+		}
+		label{
+			font-family: 'Montserrat', sans-serif;
+			font-weight: bold;
+			font-size: 13.5px;
+		}
 
-      <input type="text" placeholder="State" name="student_state" required>
+		.mylist{
+			border: 1px solid #dc70fb;
+			font-family: 'Montserrat', sans-serif;
+			font-weight: bolder;
+		}
+		.mylist:focus{
+			border: 1px solid #dc70fb;
+			background-color: lavender;
+		}
+		.login_link{
+			position: relative;
+			border: 2px solid #dc70fb;
+			width: 200px;
+			text-align: center;
+			border-radius: 8%;
+			padding: 3px;
+			left: 580px;
+		}
+		.login_link a{
+			color: black;
+			font-family: 'Montserrat', sans-serif;
+		}
+		.login_link:hover{
+			background-color: gainsboro;
+		}
+		.footer{
+			border: 2px solid black;
+			width: 100%;
+			background-color: #dc70fb;
+		}
+		.footer_word{
+			margin-top: 8px;
+			font-size: 50px;
+			font-weight: bold;
+			color: white;
+			font-family: 'Lobster Two', cursive;
+			text-align: center;
+			letter-spacing: 3px;
+		}
+		.copyright{
+			position: relative;
+			left: 595px;
+			margin: 8px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header" id="header">
+		<div class="logo">
+			<img src="C:/Users/arnav_000/Downloads/robin_logo.png"/>
+		</div>
+		<div class="title">
+			Robin Education
+		</div>
+		<ul class="nav">
+			<a href="https://www.robineducation.org/" target="_blank"><li><div>Main Site</div></li></a>
+			<a href="http://parent.robineducation.org" target="_blank"><li><div>Parents</div></li></a>
+		</ul>
+	</div>
+	<br/><br><br><br>
+	<div class="main">
+		<h2>Student Gateway</h2>
+		<br><hr><br><br><br>
+		<h3>Register Now!</h3>
+		<br>
+		<div class="register_form">
+			<div class="username/password">
+				<div class="textbox">
+					<div class="username">
+						<form id="username_box" name="username_box" method="post">
+							<input id="num1" class = "input_textbox" type="textbox" name="student_username" placeholder="Username">
+						</form>
+					</div>
+					<div class="password">
+						<form id="password_box" name="password_box" method="post">
+							<input id="num2" class = "input_textbox" type="password" name="student_pw" placeholder="Password">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="confp">
+				<div class="textbox">
+					<div class="email">
+						<form id="email_box" name="email_box" method="post">
+							<input id="num3" class = "input_textbox" type="textbox" name="student_email" placeholder="Email">
+						</form>
+					</div>
+					<div class="confirmpassword">
+						<form id="confpw_box" name="confpw_box" method="post">
+							<input id="num4" class = "input_textbox" type="password" name="student_confpw" placeholder="Confirm Password">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="name">
+				<div class="textbox">
+					<div class="first_name">
+						<form id="firstname_box" name="firstname_box" method="post">
+							<input id="num5" class = "input_textbox" type="textbox" name="student_first_name" placeholder="First Name">
+						</form>
+					</div>
+					<div class="last_name">
+						<form id="lastname_box" name="lastname_box" method="post">
+							<input id="num6" class = "input_textbox" type="textbox" name="student_last_name" placeholder="Last Name">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="contact">
+				<div class="textbox">
+					<div class="dob">
+						<form id="dob_box" name="dob_box" method="post">
+							<input id="num7" class = "input_textbox" type="textbox" name="student_dob" placeholder="Date of Birth: dd/mm/yyyy">
+						</form>
+					</div>
+					<div class="phone">
+						<form id="phone_box" name="phone_box" method="post">
+							<input id="num8" class = "input_textbox" type="tel" name="student_phone" placeholder="Mobile Number">
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="education">
+				<div class="textbox">
+					<div class="school">
+						<form id="school_box" name="school_box" method="post">
+							<input id="num9" class = "input_textbox" type="textbox" name="student_school" placeholder="High School Name">
+						</form>
+					</div>
+				</div>
+				<div class="dropdown">
+					<div class="gradelevel">
+						<form id="grade_drop" name="grade_drop" method="post">
+							<fieldset class="fieldset_drop" id="num10">
+								<p>
+									<label>Incoming Grade:</label>
+									<select class="mylist" name="student_grade">
+										<option value = "1">9<sup>th</sup></option>
+										<option value = "2">10<sup>th</sup></option>
+										<option value = "3">11<sup>th</sup></option>
+										<option value = "4">12<sup>th</sup></option>
+									</select>
+								</p>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="courses">
+				<label>Which courses are you interested in preparing for?</label>
+				<form id="course_box" name="course_box" method="post">
+					<input id="num11" class = "input_textbox" type="textbox" name="student_courses" placeholder="Ex: AP Calculus AB, Chemistry Honors, AP Euro">
+				</form>
+			</div>
+			<div class="nextstep">
+				<form id="nextstep_box" class="nextstep_box" method="post">
+					<button id="button_form" name="checkout_button"><a href="" target="_blank">To Checkout</a></button>
+				</form>
+			</div>
 
-      <input type="text" placeholder="Zip" name="student_zip" required>
-    </div>
-    <div>
-      <input type="text" placeholder="Courses" name="student_courses" required>
-
-    <button type="submit">Register</button>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <span class="psw"><p>{{error_msg}}</p></span>
-    </div>
-  </form>
-</html
+		</div>
+		<br>
+		<br>
+		<br>
+		<div class="login_link">
+			<a href="" target="_blank">Current Student? Log In!</a>
+		</div>
+		<br>
+		<br>
+		<br>
+	</div>
+	<div class="footer">
+		<br>
+		<div class="footer_word">
+			Creating and Capitalizing on Educational Opportunities
+		</div>
+		<br>
+		<div class="copyright">
+			&copy; Robin Education, 2020
+		</div>
+	</div>
