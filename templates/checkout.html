@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Student Checkout — Robin Education</title>
+		<link rel="icon" type="image/png" href="C:/Users/arnav_000/Downloads/robin_logo.png">
+		<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Almarai&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				text-decoration: none;
+			}
+			.header{
+				width: 100%;
+				height: 120px;
+				display: block;
+				background-color: #dc70fb;
+
+			}
+			.logo{
+				height: 100%;
+				display: table;
+				float: left;
+			}
+
+
+			.logo img{
+				position: relative;
+				top: 20px;
+				left: 40px;
+				width: 70px;
+				height: 70px;
+				display: table-cell;
+			}
+
+			.title{
+				position: relative;
+				height: 100%;
+				display: table;
+				float: left;
+				font-size: 35px;
+				top: 40px;
+				left: 70px;
+				color: white;
+				font-weight: bold;
+				letter-spacing: 1px;
+				font-family: 'Almarai', sans-serif;
+
+			}
+			.nav{
+				float: right;
+				height: 100%;
+			}
+			.nav a{
+				height: 100%;
+				display: table;
+				float: left;
+				padding: 0px 20px;
+
+			}
+			.nav a li{
+				display: table-cell;
+				vertical-align: middle;
+			}
+
+			.nav a:last-child{
+				padding-right: 100px;
+			}
+			.nav a li div{
+				background-color: white;
+				padding: 12px 15px;
+				border-radius: 6%;
+				color: darkviolet;
+				font-family: 'Montserrat', sans-serif;
+				font-weight: bold;
+			}
+			.nav a li div:hover{
+				background-color: gainsboro;
+			}
+			h2{
+				text-align: center;
+				font-size: 50px;
+				font-family: arial;
+			}
+			h3{
+				text-align: center;
+				font-size: 30px;
+				font-family: arial;
+			}
+			hr{
+				position: relative;
+				left: 457px;
+				width: 438px;
+			}
+			.checkout{
+				padding: 10px 10px;
+				position: relative;
+				height: 320px;
+				width: 400px;
+				border: 2px solid #dc70fb;
+				left: 463px;
+				border-radius: 5%;
+				font-family: 'Montserrat', sans-serif;
+			}
+			.checkout_parts{
+				width: 100%;
+				text-align: center;
+				font-size: 20px;
+			}
+			#plan{
+				position: relative;
+				top: 40px;
+			}
+			#cost{
+				position: relative;
+				top: 80px;
+			}
+			#promo{
+				position: relative;
+				top: 120px;
+			}
+			#buttons{
+				position: relative;
+				top: 183px;
+				text-align: center;
+			}
+			.pay_buttons{
+				padding: 8px;
+				font-family: 'Montserrat', sans-serif;
+				font-weight: bold;
+				font-size: 13px;
+				background-color: lavender;
+				border: 3px solid #dc70fb;
+				height: 40px;
+				border-radius: 10%;
+			}
+			.pay_buttons a{
+				color: black;
+			}
+			.pay_buttons:hover{
+				background-color: #dc70fb;
+				border: 3px solid black;
+			}
+			#num1{
+				position: relative;
+				right: 50px;
+				width: 90px;
+			}
+			#num2{
+				position: relative;
+				left: 50px;
+				width: 110px;
+			}
+			.footer{
+				border: 2px solid black;
+				width: 100%;
+				background-color: #dc70fb;
+			}
+			.footer_word{
+				margin-top: 8px;
+				font-size: 50px;
+				font-weight: bold;
+				color: white;
+				font-family: 'Lobster Two', cursive;
+				text-align: center;
+				letter-spacing: 3px;
+			}
+			.copyright{
+				position: relative;
+				left: 595px;
+				margin: 8px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<div class="logo">
+				<img src="C:/Users/arnav_000/Downloads/robin_logo.png"/>
+			</div>
+			<div class="title">
+				Robin Education
+			</div>
+			<ul class="nav">
+				<a href="https://www.robineducation.org/" target="_blank"><li><div>Main Site</div></li></a>
+				<a href="http://parent.robineducation.org" target="_blank"><li><div>Parents</div></li></a>
+			</ul>
+		</div>
+		<br/><br><br><br>
+		<div class="main">
+			<h2>Student Checkout</h2>
+			<br><hr><br><br><br>
+			<h3>Get Ready to succeed!</h3>
+			<br>
+			<div class="checkout">
+				<div class="checkout_parts" id="plan">
+					<span>
+						Plan: {{plan}}
+					</span>
+				</div>
+				<div class="checkout_parts" id="cost">
+					<span>
+						Cost: {{cost}}
+					</span>
+				</div>
+				<div class="checkout_parts" id="promo">
+					<span>
+						Promo: {{promo}}
+					</span>
+				</div>
+				<div id="buttons">
+					<form id="paypal_button" name="paypal_button" method="post">
+						<button id="num1" class="pay_buttons"><a href="www.google.com" target="_blank">Paypal</a></button>
+						<button id="num2" class="pay_buttons"><a href="www.google.com" target="_blank">Paypal Credit</a></button>
+					</form>
+				</div>
+			</div>
+			<br><br><br>
+		</div>
+		<div class="footer">
+			<br>
+			<div class="footer_word">
+				Creating and Capitalizing on Educational Opportunities
+			</div>
+			<br>
+			<div class="copyright">
+				&copy; Robin Education, 2020
+			</div>
+		</div>
+	</body>
+</html>
