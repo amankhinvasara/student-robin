@@ -80,27 +80,36 @@
 		.nav a li div:hover{
 			background-color: gainsboro;
 		}
-		.top{
+		.top, .top2{
 			text-align: center;
-			justify-content: center;
 			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 		h2{
 			font-size: 50px;
 			font-family: arial;
+		}
+		hr{
+			width: 400px;
 		}
 		h3{
 			text-align: center;
 			font-size: 30px;
 			font-family: arial;
 		}
+		.container{
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 		.register_form{
 			padding: 10px 10px;
-			position: relative;
 			height: 650px;
 			width: 500px;
 			border: 2px solid #dc70fb;
-			left: 422px;
 			border-radius: 5%;
 			font-family: 'Montserrat', sans-serif;
 
@@ -232,13 +241,11 @@
 			background-color: lavender;
 		}
 		.login_link{
-			position: relative;
 			border: 2px solid #dc70fb;
 			width: 200px;
 			text-align: center;
 			border-radius: 8%;
 			padding: 3px;
-			left: 580px;
 		}
 		.login_link a{
 			color: black;
@@ -261,11 +268,6 @@
 			text-align: center;
 			letter-spacing: 3px;
 		}
-		.copyright{
-			position: relative;
-			left: 595px;
-			margin: 8px;
-		}
 	</style>
 </head>
 <body>
@@ -285,68 +287,76 @@
 	<div class="main">
 		<div class="top">
 			<h2>Student Gateway</h2>
-			<br><hr><br><br><br>
 		</div>
+		<br>
+		<div class="top2">
+			<hr>
+		</div>
+		<br><br><br>
 		<h3>Register Now!</h3>
 		<br>
-		<div class="register_form">
-			<form id="register_box" name="register_box" method="post">
-				<div class="username">
-					<input id="num1" class = "input_textbox" type="textbox" name="student_username" placeholder="Username">
-				</div>
-				<div class="password">
-					<input id="num2" class = "input_textbox" type="password" name="student_pw" placeholder="Password">
-				</div>
-				<div class="email">
-					<input id="num3" class = "input_textbox" type="textbox" name="student_email" placeholder="Email">
-				</div>
-				<div class="confirmpassword">
-					<input id="num4" class = "input_textbox" type="password" name="student_confpw" placeholder="Confirm Password">
-				</div>
-				<div class="first_name">
-					<input id="num5" class = "input_textbox" type="textbox" name="student_first_name" placeholder="First Name">
-				</div>
-				<div class="last_name">
-					<input id="num6" class = "input_textbox" type="textbox" name="student_last_name" placeholder="Last Name">
-				</div>
-				<div class="dob">
-					<input id="num7" class = "input_textbox" type="textbox" name="student_dob" placeholder="Date of Birth: dd/mm/yyyy">
-				</div>
-				<div class="phone">
-					<input id="num8" class = "input_textbox" type="tel" name="student_phone" placeholder="Mobile Number">
-				</div>
-				<div class="school">
-					<input id="num9" class = "input_textbox" type="textbox" name="student_school" placeholder="High School Name">
-				</div>
-				<div class="gradelevel">
-					<fieldset class="fieldset_drop" id="num10">
-						<p>
-							<label>Incoming Grade:</label>
-							<select class="mylist" name="student_grade">
-								<option value = "1">9<sup>th</sup></option>
-								<option value = "2">10<sup>th</sup></option>
-								<option value = "3">11<sup>th</sup></option>
-								<option value = "4">12<sup>th</sup></option>
-							</select>
-						</p>
-					</fieldset>
-				</div>
-				<div class="courses">
-					<label>Which courses are you interested in preparing for?</label>
-					<input id="num11" class = "input_textbox" type="textbox" name="student_courses" placeholder="Ex: AP Calculus AB, Chemistry Honors, AP Euro">
-				</div>
-				<div class="nextstep">
-					<button id="button_form" name="checkout_button" type="submit">
-						To Checkout
-					</button>
-				</div>
-			</form>
+		<div class="container">
+			<div class="register_form">
+				<form id="register_box" name="register_box" method="post">
+					<div class="username">
+						<input id="num1" class = "input_textbox" type="textbox" name="student_username" placeholder="Username">
+					</div>
+					<div class="password">
+						<input id="num2" class = "input_textbox" type="password" name="student_pw" placeholder="Password">
+					</div>
+					<div class="email">
+						<input id="num3" class = "input_textbox" type="textbox" name="student_email" placeholder="Email">
+					</div>
+					<div class="confirmpassword">
+						<input id="num4" class = "input_textbox" type="password" name="student_confpw" placeholder="Confirm Password">
+					</div>
+					<div class="first_name">
+						<input id="num5" class = "input_textbox" type="textbox" name="student_first_name" placeholder="First Name">
+					</div>
+					<div class="last_name">
+						<input id="num6" class = "input_textbox" type="textbox" name="student_last_name" placeholder="Last Name">
+					</div>
+					<div class="dob">
+						<input id="num7" class = "input_textbox" type="textbox" name="student_dob" placeholder="Date of Birth: dd/mm/yyyy">
+					</div>
+					<div class="phone">
+						<input id="num8" class = "input_textbox" type="tel" name="student_phone" placeholder="Mobile Number">
+					</div>
+					<div class="school">
+						<input id="num9" class = "input_textbox" type="textbox" name="student_school" placeholder="High School Name">
+					</div>
+					<div class="gradelevel">
+						<fieldset class="fieldset_drop" id="num10">
+							<p>
+								<label>Incoming Grade:</label>
+								<select class="mylist" name="student_grade">
+									<option value = "1">9<sup>th</sup></option>
+									<option value = "2">10<sup>th</sup></option>
+									<option value = "3">11<sup>th</sup></option>
+									<option value = "4">12<sup>th</sup></option>
+								</select>
+							</p>
+						</fieldset>
+					</div>
+					<div class="courses">
+						<label>Which courses are you interested in preparing for?</label>
+						<input id="num11" class = "input_textbox" type="textbox" name="student_courses" placeholder="Ex: AP Calculus AB, Chemistry Honors, AP Euro">
+					</div>
+					<div class="nextstep">
+						<button id="button_form" name="checkout_button" type="submit">
+							To Checkout
+						</button>
+					</div>
+				</form>
+			</div>
 		</div>
 		<br>
 		<br>
 		<br>
-		<div class="login_link">
-			<a href="" target="_blank">Current Student? Log In!</a>
+		<div class="container">
+			<div class="login_link">
+				<a href="" target="_blank">Current Student? Log In!</a>
+			</div>
 		</div>
 		<br>
 		<br>
@@ -358,7 +368,9 @@
 			Creating and Capitalizing on Educational Opportunities
 		</div>
 		<br>
-		<div class="copyright">
-			&copy; Robin Education, 2020
+		<div class="container">
+			<div class="copyright">
+				&copy; Robin Education, 2020
+			</div>
 		</div>
 	</div>
