@@ -44,9 +44,9 @@ def register_student(in_dict,cur,conn):
 	try:
 		cur.execute("""INSERT INTO students (student_username, student_pw,
 			student_first_name,student_last_name, student_email, student_phone,
-			student_school, student_grade, student_courses) VALUES (%(student_username)s, %(student_pw)s,
+			student_school, student_grade, student_courses, student_dob) VALUES (%(student_username)s, %(student_pw)s,
 			%(student_first_name)s, %(student_last_name)s, %(student_email)s, %(student_phone)s,
-			%(student_school)s, %(student_grade)s, %(student_courses)s);""",in_dict)
+			%(student_school)s, %(student_grade)s, %(student_courses)s, %(student_dob)s);""",in_dict)
 		return 200
 	
 	except psycopg2.errors.UniqueViolation:
@@ -120,7 +120,7 @@ class Student:
 		def __init__(self,row_list):
 			self.row_dict = {}
 			keys = ["student_username", "student_pw", "student_first_name","student_last_name", "student_email", "student_phone",
-			"student_school", "student_grade", "student_courses","student_assignments"]
+			"student_school", "student_grade", "student_courses","student_assignments","student_dob"]
 			for key in keys:
 				self.row_dict[key] = row_list[keys.index(key)]
 			
