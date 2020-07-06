@@ -80,18 +80,20 @@
 		.nav a li div:hover{
 			background-color: gainsboro;
 		}
-		h2{
+		.top{
 			text-align: center;
+			justify-content: center;
+			width: 100%;
+		}
+		h2{
 			font-size: 50px;
 			font-family: arial;
 		}
-
 		h3{
 			text-align: center;
 			font-size: 30px;
 			font-family: arial;
 		}
-
 		.register_form{
 			padding: 10px 10px;
 			position: relative;
@@ -102,11 +104,6 @@
 			border-radius: 5%;
 			font-family: 'Montserrat', sans-serif;
 
-		}
-		hr{
-			position: relative;
-			left: 473px;
-			width: 400px;
 		}
 		.input_textbox{
 			border: none;
@@ -286,105 +283,64 @@
 	</div>
 	<br/><br><br><br>
 	<div class="main">
-		<h2>Student Gateway</h2>
-		<br><hr><br><br><br>
+		<div class="top">
+			<h2>Student Gateway</h2>
+			<br><hr><br><br><br>
+		</div>
 		<h3>Register Now!</h3>
 		<br>
 		<div class="register_form">
-			<div class="username/password">
-				<div class="textbox">
-					<div class="username">
-						<form id="username_box" name="username_box" method="post">
-							<input id="num1" class = "input_textbox" type="textbox" name="student_username" placeholder="Username">
-						</form>
-					</div>
-					<div class="password">
-						<form id="password_box" name="password_box" method="post">
-							<input id="num2" class = "input_textbox" type="password" name="student_pw" placeholder="Password">
-						</form>
-					</div>
+			<form id="register_box" name="register_box" method="post">
+				<div class="username">
+					<input id="num1" class = "input_textbox" type="textbox" name="student_username" placeholder="Username">
 				</div>
-			</div>
-			<div class="confp">
-				<div class="textbox">
-					<div class="email">
-						<form id="email_box" name="email_box" method="post">
-							<input id="num3" class = "input_textbox" type="textbox" name="student_email" placeholder="Email">
-						</form>
-					</div>
-					<div class="confirmpassword">
-						<form id="confpw_box" name="confpw_box" method="post">
-							<input id="num4" class = "input_textbox" type="password" name="student_confpw" placeholder="Confirm Password">
-						</form>
-					</div>
+				<div class="password">
+					<input id="num2" class = "input_textbox" type="password" name="student_pw" placeholder="Password">
 				</div>
-			</div>
-			<div class="name">
-				<div class="textbox">
-					<div class="first_name">
-						<form id="firstname_box" name="firstname_box" method="post">
-							<input id="num5" class = "input_textbox" type="textbox" name="student_first_name" placeholder="First Name">
-						</form>
-					</div>
-					<div class="last_name">
-						<form id="lastname_box" name="lastname_box" method="post">
-							<input id="num6" class = "input_textbox" type="textbox" name="student_last_name" placeholder="Last Name">
-						</form>
-					</div>
+				<div class="email">
+					<input id="num3" class = "input_textbox" type="textbox" name="student_email" placeholder="Email">
 				</div>
-			</div>
-			<div class="contact">
-				<div class="textbox">
-					<div class="dob">
-						<form id="dob_box" name="dob_box" method="post">
-							<input id="num7" class = "input_textbox" type="textbox" name="student_dob" placeholder="Date of Birth: dd/mm/yyyy">
-						</form>
-					</div>
-					<div class="phone">
-						<form id="phone_box" name="phone_box" method="post">
-							<input id="num8" class = "input_textbox" type="tel" name="student_phone" placeholder="Mobile Number">
-						</form>
-					</div>
+				<div class="confirmpassword">
+					<input id="num4" class = "input_textbox" type="password" name="student_confpw" placeholder="Confirm Password">
 				</div>
-			</div>
-			<div class="education">
-				<div class="textbox">
-					<div class="school">
-						<form id="school_box" name="school_box" method="post">
-							<input id="num9" class = "input_textbox" type="textbox" name="student_school" placeholder="High School Name">
-						</form>
-					</div>
+				<div class="first_name">
+					<input id="num5" class = "input_textbox" type="textbox" name="student_first_name" placeholder="First Name">
 				</div>
-				<div class="dropdown">
-					<div class="gradelevel">
-						<form id="grade_drop" name="grade_drop" method="post">
-							<fieldset class="fieldset_drop" id="num10">
-								<p>
-									<label>Incoming Grade:</label>
-									<select class="mylist" name="student_grade">
-										<option value = "1">9<sup>th</sup></option>
-										<option value = "2">10<sup>th</sup></option>
-										<option value = "3">11<sup>th</sup></option>
-										<option value = "4">12<sup>th</sup></option>
-									</select>
-								</p>
-							</fieldset>
-						</form>
-					</div>
+				<div class="last_name">
+					<input id="num6" class = "input_textbox" type="textbox" name="student_last_name" placeholder="Last Name">
 				</div>
-			</div>
-			<div class="courses">
-				<label>Which courses are you interested in preparing for?</label>
-				<form id="course_box" name="course_box" method="post">
+				<div class="dob">
+					<input id="num7" class = "input_textbox" type="textbox" name="student_dob" placeholder="Date of Birth: dd/mm/yyyy">
+				</div>
+				<div class="phone">
+					<input id="num8" class = "input_textbox" type="tel" name="student_phone" placeholder="Mobile Number">
+				</div>
+				<div class="school">
+					<input id="num9" class = "input_textbox" type="textbox" name="student_school" placeholder="High School Name">
+				</div>
+				<div class="gradelevel">
+					<fieldset class="fieldset_drop" id="num10">
+						<p>
+							<label>Incoming Grade:</label>
+							<select class="mylist" name="student_grade">
+								<option value = "1">9<sup>th</sup></option>
+								<option value = "2">10<sup>th</sup></option>
+								<option value = "3">11<sup>th</sup></option>
+								<option value = "4">12<sup>th</sup></option>
+							</select>
+						</p>
+					</fieldset>
+				</div>
+				<div class="courses">
+					<label>Which courses are you interested in preparing for?</label>
 					<input id="num11" class = "input_textbox" type="textbox" name="student_courses" placeholder="Ex: AP Calculus AB, Chemistry Honors, AP Euro">
-				</form>
-			</div>
-			<div class="nextstep">
-				<form id="nextstep_box" class="nextstep_box" method="post">
-					<button id="button_form" name="checkout_button"><a href="" target="_blank">To Checkout</a></button>
-				</form>
-			</div>
-
+				</div>
+				<div class="nextstep">
+					<button id="button_form" name="checkout_button" type="submit">
+						To Checkout
+					</button>
+				</div>
+			</form>
 		</div>
 		<br>
 		<br>
