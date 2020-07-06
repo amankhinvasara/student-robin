@@ -4,6 +4,8 @@ from flask_login import LoginManager, login_required, login_user, logout_user
 
 #from flask.ext.security import login_required
 
+print("imports complete")
+
 login_manager = LoginManager()
 
 app = Flask(__name__)
@@ -20,10 +22,11 @@ def load_user(user_id):
 
 @app.route("/register",methods=["GET","POST"])
 def reg_student():
+    print("in register route")
     student_username = request.form.get("student_username")
     if student_username is None:
         return render_template("register.html",error_msg="")
-
+    print("student_username is not None")
     student_pw = request.form.get("student_pw").strip()
     student_conf_pw = request.form.get("student_conf_pw").strip()
     if student_pw != student_conf_pw:
@@ -35,19 +38,19 @@ def reg_student():
     student_grade = request.form.get("student_grade")
     student_school = request.form.get("student_school")
 
-    # ion wanna deal with address storage
-"""    student_street = request.form.get("student_street")
-    student_city  = request.form.get("student_city")
-    student_zip = request.form.get("student_zip")
-    student_state = request.form.get("student_state")"""
     student_courses = request.form.get("student_courses")
 
     in_dict = {"student_username":student_username, "student_pw":encode(student_pw),
             "student_first_name":student_first_name,"student_last_name":student_last_name, "student_email":student_email,
-            "student_phone":student_phone, "student_school":student_school, "student_grade":student_grade, "student_street":student_street,
-            "student_city":student_city, "student_state":student_state, "student_zip":student_zip, "student_courses":student_courses}
+            "student_phone":student_phone, "student_school":student_school, "student_grade":student_grade, "student_courses":student_courses} 
+    print("in_dict created")
+
     y = register_student(in_dict,cur,conn)
+
+    print("register_student func completed")
+
     if y == 200:
+        print("SUCCESS")
         flash("Succesfully Registered")
         return redirect(url_for("login"))
 
