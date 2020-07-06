@@ -34,7 +34,7 @@ def register_student(in_dict,cur,conn):
 
 	keys = ["student_username", "student_pw",
 			"student_first_name","student_last_name", "student_email", "student_phone", "student_courses"
-			"student_school", "student_grade"]
+			"student_school", "student_grade","student_dob"]
 			
 	in_keys = in_dict.keys()
 	for key in keys:

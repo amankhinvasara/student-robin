@@ -117,6 +117,16 @@
 				font-family: 'Montserrat', sans-serif;
 				justify-content: center;
 			}
+      .error_message{
+        color: red;
+        font-weight: bold;
+        font-size: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;     
+      }
 			.input_textbox{
 				border: none;
 				border-bottom: 2px solid #dc70fb;
@@ -230,6 +240,9 @@
 			<br>
 			<div class="container">
 				<div class="login">
+          <div class="error_message">
+            {{error_msg}}
+          </div>
 					<form id="login_box" name="login_box" method="post">
 						<div class="username">
 							<input id="num1" class="input_textbox" type="textbox" name="username" placeholder="Username" required>
