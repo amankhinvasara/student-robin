@@ -17,8 +17,7 @@ def curse():
 def create_students_table():
 	cur.execute("""CREATE TABLE students (student_username varchar PRIMARY KEY, student_pw varchar,
 			student_first_name varchar,student_last_name varchar, student_email varchar UNIQUE, student_phone bigint,
-			student_school varchar, student_grade smallint, student_street varchar, student_city varchar,
-			student_state varchar, student_zip int, student_courses varchar);""")
+			student_school varchar, student_grade smallint, student_courses varchar);""")
 def create_parents_table():
 	cur.execute("""CREATE TABLE parents (parent_id serial PRIMARY KEY, parent_username varchar, parent_pw varchar, parent_first_name varchar,
 			parent_last_name varchar, parent_phone integer, parent_email varchar, student_id int, payment_status varchar, plan_id int);""")
@@ -34,10 +33,9 @@ def register_student(in_dict,cur,conn):
 
 
 	keys = ["student_username", "student_pw",
-			"student_first_name","student_last_name", "student_email", "student_phone",
-			"student_school", "student_grade", "student_street", "student_city",
-			"student_state", "student_zip", "student_courses"]
-	
+			"student_first_name","student_last_name", "student_email", "student_phone", "student_courses"
+			"student_school", "student_grade"]
+			
 	in_keys = in_dict.keys()
 	for key in keys:
 		if key not in in_keys:
@@ -46,11 +44,9 @@ def register_student(in_dict,cur,conn):
 	try:
 		cur.execute("""INSERT INTO students (student_username, student_pw,
 			student_first_name,student_last_name, student_email, student_phone,
-			student_school, student_grade, student_street, student_city,
-			student_state, student_zip, student_courses) VALUES (%(student_username)s, %(student_pw)s,
+			student_school, student_grade, student_courses) VALUES (%(student_username)s, %(student_pw)s,
 			%(student_first_name)s, %(student_last_name)s, %(student_email)s, %(student_phone)s,
-			%(student_school)s, %(student_grade)s, %(student_street)s, %(student_city)s,
-			%(student_state)s, %(student_zip)s, %(student_courses)s);""",in_dict)
+			%(student_school)s, %(student_grade)s, %(student_courses)s);""",in_dict)
 		return 200
 	
 	except psycopg2.errors.UniqueViolation:
@@ -124,7 +120,7 @@ class Student:
 		def __init__(self,row_list):
 			self.row_dict = {}
 			keys = ["student_username", "student_pw", "student_first_name","student_last_name", "student_email", "student_phone",
-			"student_school", "student_grade", "student_street", "student_city", "student_state", "student_zip", "student_courses","student_assignments"]
+			"student_school", "student_grade", "student_courses","student_assignments"]
 			for key in keys:
 				self.row_dict[key] = row_list[keys.index(key)]
 			
@@ -278,8 +274,6 @@ class User:
 def is_student(username,cur,conn):
 	cur.execute("SELECT * FROM students WHERE student_username=%s;",(username,))
 	matches = cur.fetchall()
-	print("matches was")
-	print(matches)
 	if matches is None or len(matches) == 0:
 		return None
 	else:
@@ -290,8 +284,7 @@ def is_student(username,cur,conn):
 
 sample_in = {"student_username":"trial1", "student_pw":"trialpw1", "student_first_name":"Aman","student_last_name":"Khinvasara",
 			 "student_email":"amankhinvasara@gmail.com", "student_phone":4085692914, "student_school":"Saint Francis",
-			 "student_grade":12, "student_street":"1084 Zamora Ct", "student_city":"Milpitas", "student_state":"CA",
-			 "student_zip":95035, "student_courses":"0001,0003"}
+			 "student_grade":12, "student_courses":"0001,0003"}
 
 parent_sample_in = {"parent_username":"tractor","parent_pw":"dreams","parent_first_name":"Sona","parent_last_name":"Khinvasara",
 				"parent_phone":4085692914,"parent_email":"tushsona@hotmail.com", "payment_status":"paid", "plan_id":3, "paid":0, "end_total_cost":1000,
