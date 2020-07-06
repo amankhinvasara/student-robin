@@ -126,7 +126,7 @@ class Student:
 			
 			# change courses into list type 
 			course_str = self.row_dict["student_courses"]
-			courses = [int(course) for course in course_str.split(",")]
+			courses = course_str.split(",")
 			self.row_dict["student_courses"] = courses
 
 			#change assignments into list
