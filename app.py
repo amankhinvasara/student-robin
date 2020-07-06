@@ -30,11 +30,13 @@ def reg_student():
     student_pw = request.form.get("student_pw").strip()
     student_conf_pw = request.form.get("student_conf_pw").strip()
     if student_pw != student_conf_pw:
-        return render_template("register.html",error_msg="Passwords don't match")
+        return render_template("register.html",error_msg="Passwords don't match :(!")
     
     student_first_name = request.form.get("student_first_name")
     student_last_name = request.form.get("student_last_name")
     student_email = request.form.get("student_email")
+    if "." not in student_email or "@" not in student_email:
+        return render_template("register.html",error_msg="Please enter a valid email address")
     
     # check if phone num is correct
     student_phone = request.form.get("student_phone").replace("(","").replace(")","").replace("-","")
@@ -45,7 +47,15 @@ def reg_student():
     student_school = request.form.get("student_school")
 
     student_courses = request.form.get("student_courses")
-    student_dob = request.form.get("student_dob")
+    student_dob = request.form.get("student_dob").strip()
+    dob_wrong = True
+    if len(student_dob)==10:
+        if student_dob[2]=="/" and student_dob[5]=="/":
+            if student_dob.replace("/","").isnumeric():
+                dob_wrong=False
+    if dob_wrong:
+        return render_template("register.html",error_msg="Please enter your birthdate as mm/dd/yyyy")
+
 
     in_dict = {"student_username":student_username, "student_pw":encode(student_pw),
             "student_first_name":student_first_name,"student_last_name":student_last_name, "student_email":student_email,
@@ -79,7 +89,7 @@ def login():
             return render_template("login.html",error_msg = "Username was not found")
         if password!=decode(user_man.student_obj.row_dict["student_pw"]):
             logout_user()
-            return render_template("login.html",error_msg="incorrect password, please try again")
+            return render_template("login.html",error_msg="Incorrect password, please try again")
 
         return redirect(url_for('profile'))
 

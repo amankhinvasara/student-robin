@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Student Gateway — Robin Education</title>
+	<link rel="icon" type="image/png" href="static/logo.png">
 	<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Almarai&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -282,7 +283,7 @@
 <body>
 	<div class="header" id="header">
 		<div class="logo">
-			<img src="C:/Users/arnav_000/Downloads/robin_logo.png"/>
+			<img src="static/logo.png"/>
 		</div>
 		<div class="title">
 			Robin Education
@@ -311,34 +312,34 @@
 				</div>
 				<form id="register_box" name="register_box" method="post">
 					<div class="username">
-						<input id="num1" class = "input_textbox" type="textbox" name="student_username" placeholder="Username">
+						<input id="num1" class = "input_textbox" type="textbox" name="student_username" placeholder="Username" required>
 					</div>
 					<div class="password">
-						<input id="num2" class = "input_textbox" type="password" name="student_pw" placeholder="Password">
+						<input id="num2" class = "input_textbox" type="password" name="student_pw" placeholder="Password" required>
 					</div>
 					<div class="email">
-						<input id="num3" class = "input_textbox" type="textbox" name="student_email" placeholder="Email">
+						<input id="num3" class = "input_textbox" type="textbox" name="student_email" placeholder="Email" required>
 					</div>
 					<div class="confirmpassword">
-						<input id="num4" class = "input_textbox" type="password" name="student_conf_pw" placeholder="Confirm Password">
+						<input id="num4" class = "input_textbox" type="password" name="student_conf_pw" placeholder="Confirm Password" required>
 					</div>
 					<div class="first_name">
-						<input id="num5" class = "input_textbox" type="textbox" name="student_first_name" placeholder="First Name">
+						<input id="num5" class = "input_textbox" type="textbox" name="student_first_name" placeholder="First Name" required>
 					</div>
 					<div class="last_name">
-						<input id="num6" class = "input_textbox" type="textbox" name="student_last_name" placeholder="Last Name">
+						<input id="num6" class = "input_textbox" type="textbox" name="student_last_name" placeholder="Last Name" required>
 					</div>
 					<div class="dob">
-						<input id="num7" class = "input_textbox" type="textbox" name="student_dob" placeholder="Date of Birth: dd/mm/yyyy">
+						<input id="num7" class = "input_textbox" type="textbox" name="student_dob" placeholder="Date of Birth: dd/mm/yyyy" required>
 					</div>
 					<div class="phone">
-						<input id="num8" class = "input_textbox" type="tel" name="student_phone" placeholder="Mobile Number">
+						<input id="num8" class = "input_textbox" type="tel" name="student_phone" placeholder="Mobile Number" required>
 					</div>
 					<div class="school">
-						<input id="num9" class = "input_textbox" type="textbox" name="student_school" placeholder="High School Name">
+						<input id="num9" class = "input_textbox" type="textbox" name="student_school" placeholder="High School Name" required>
 					</div>
 					<div class="gradelevel">
-						<fieldset class="fieldset_drop" id="num10">
+						<fieldset class="fieldset_drop" id="num10" required>
 							<p>
 								<label>Incoming Grade:</label>
 								<select class="mylist" name="student_grade">
@@ -350,7 +351,7 @@
 							</p>
 						</fieldset>
 					</div>
-					<div class="courses">
+					<div class="courses" required>
 						<label>Which courses are you interested in preparing for?</label>
 						<input id="num11" class = "input_textbox" type="textbox" name="student_courses" placeholder="Ex: AP Calculus AB, Chemistry Honors, AP Euro">
 					</div>
@@ -367,7 +368,7 @@
 		<br>
 		<div class="container">
 			<div class="login_link">
-				<a href="" target="_blank">Current Student? Log In!</a>
+				<a href="/login">Current Student? Log In!</a>
 			</div>
 		</div>
 		<br>
