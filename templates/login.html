@@ -81,31 +81,38 @@
 			.nav a li div:hover{
 				background-color: gainsboro;
 			}
-			h2{
-			text-align: center;
-			font-size: 50px;
-			font-family: arial;
+			.top, .top2{
+				text-align: center;
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 			}
-
+			h2{
+				font-size: 50px;
+				font-family: arial;
+			}
 			h3{
 				text-align: center;
 				font-size: 30px;
 				font-family: arial;
 			}
 			hr{
-				position: relative;
-				left: 497px;
-				width: 370px;
+				width: 350px;
+			}
+			.container{
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 			.login{
 				padding: 10px 10px;
 				padding-top: 5px;
 				padding-bottom: 10px;
-				position: relative;
 				border: 2px solid #dc70fb;
 				height: 315px;
 				width: 350px;
-				left: 493px;
 				border-radius: 5%;
 				font-family: 'Montserrat', sans-serif;
 				justify-content: center;
@@ -118,7 +125,7 @@
 				width: 220px;
 			}
 			.input_textbox:hover{
-			background-color: gainsboro;
+				background-color: gainsboro;
 			}
 			.input_textbox::placeholder{
 				color: black;
@@ -183,8 +190,6 @@
 				color: black;
 			}
 			.no_register{
-				position: relative;
-				left: 547px;
 				border: 2px solid #dc70fb;
 				width: 240px;
 				padding: 3px;
@@ -214,11 +219,6 @@
 				text-align: center;
 				letter-spacing: 3px;
 			}
-			.copyright{
-				position: relative;
-				left: 595px;
-				margin: 8px;
-			}
 		</style>
 	</head>
 	<body>
@@ -236,39 +236,49 @@
 		</div>
 		<br/><br><br><br>
 		<div class="main">
-			<h2>Student Login</h2>
-			<br><hr><br><br><br>
+			<div class="top">
+				<h2>Student Login</h2>
+			</div>
+			<br>
+			<div class="top2">
+				<hr>
+			</div>
+			<br><br><br>
 			<h3>Welcome Back!</h3>
 			<br>
-			<div class="login">
-				<div class="username">
-					<form id="username_box" name="username_box" method="post">
-						<input id="num1" class="input_textbox" type="textbox" name="username" placeholder="Username" required>
-					</form>
-				</div>
-				<div class="password">
-					<form id="password_box" name="password_box" method="post">
-						<input id="num2" class="input_textbox" type="password" name="password" placeholder="Password" required>
-					</form>
-				</div>
-				<span class="remember">
-					<form id="remember_box" name="remember_box" method="post">
-						<label>Remember Me</label>
-						<input id="num3" type="checkbox" name="remember">
-					</form>
-				</span>
-				<div class="actual">
-					<form id="login_box" name="login_box" method="post">
-						<button id="num4"><a href="" target="_blank">Login</a></button>
-					</form>
-				</div>
-				<div class="forgot">
-					<a href="" target="_blank">Forgot Password? Reset</a>
+			<div class="container">
+				<div class="login">
+					<div class="username">
+						<form id="username_box" name="username_box" method="post">
+							<input id="num1" class="input_textbox" type="textbox" name="username" placeholder="Username" required>
+						</form>
+					</div>
+					<div class="password">
+						<form id="password_box" name="password_box" method="post">
+							<input id="num2" class="input_textbox" type="password" name="password" placeholder="Password" required>
+						</form>
+					</div>
+					<span class="remember">
+						<form id="remember_box" name="remember_box" method="post">
+							<label>Remember Me</label>
+							<input id="num3" type="checkbox" name="remember">
+						</form>
+					</span>
+					<div class="actual">
+						<form id="login_box" name="login_box" method="post">
+							<button id="num4"><a href="" target="_blank">Login</a></button>
+						</form>
+					</div>
+					<div class="forgot">
+						<a href="" target="_blank">Forgot Password? Reset</a>
+					</div>
 				</div>
 			</div>
 			<br><br><br>
-			<div class="no_register">
-				<a href="" target="_blank">New Student? Create Account</a>
+			<div class="container">
+				<div class="no_register">
+					<a href="" target="_blank">New Student? Create Account</a>
+				</div>
 			</div>
 			<br><br><br>
 		</div>
@@ -278,8 +288,10 @@
 				Creating and Capitalizing on Educational Opportunities
 			</div>
 			<br>
-			<div class="copyright">
-				&copy; Robin Education, 2020
+			<div class="container">
+				<div class="copyright">
+					&copy; Robin Education, 2020
+				</div>
 			</div>
 		</div>
 	</body>
