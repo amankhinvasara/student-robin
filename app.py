@@ -19,6 +19,9 @@ login_manager.init_app(app)
 def load_user(user_id):
     return is_student(user_id,cur,conn)
 
+@app.route("/parent")
+def show_temp_parent():
+    return render_template("temp_parents.html")
 
 @app.route("/",methods=["GET","POST"])
 def reg_student():
