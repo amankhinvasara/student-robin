@@ -31,18 +31,25 @@ def reg_student():
     student_conf_pw = request.form.get("student_conf_pw").strip()
     if student_pw != student_conf_pw:
         return render_template("register.html",error_msg="Passwords don't match")
+    
     student_first_name = request.form.get("student_first_name")
     student_last_name = request.form.get("student_last_name")
     student_email = request.form.get("student_email")
+    
+    # check if phone num is correct
     student_phone = request.form.get("student_phone").replace("(","").replace(")","").replace("-","")
+    if len(student_phone)!=10:
+        return render_template("register.html",error_msg="Please enter a ten-digit phone number")
+
     student_grade = request.form.get("student_grade")
     student_school = request.form.get("student_school")
 
     student_courses = request.form.get("student_courses")
+    student_dob = request.form.get("student_dob")
 
     in_dict = {"student_username":student_username, "student_pw":encode(student_pw),
             "student_first_name":student_first_name,"student_last_name":student_last_name, "student_email":student_email,
-            "student_phone":student_phone, "student_school":student_school, "student_grade":student_grade, "student_courses":student_courses} 
+            "student_phone":student_phone, "student_school":student_school, "student_grade":student_grade, "student_courses":student_courses, "student_dob":student_dob} 
     print("in_dict created")
 
     y = register_student(in_dict,cur,conn)
