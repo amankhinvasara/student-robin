@@ -162,7 +162,7 @@
 				padding: 7px;
 				border: 2px solid black;
 				position: relative;
-				top: 125px;
+				top: 150px;
 				left: 125px;
 				border-radius: 10%;
 				color: black;
@@ -170,24 +170,6 @@
 			}
 			#num4:hover{
 				border: 4px solid black;
-			}
-			.forgot{
-				position: relative;
-				width: 200px;
-				border-bottom: 2px solid #dc70fb;
-				top: 150px;
-				left: 68px;
-				font-size: 15px;
-				font-weight: bold;
-			}
-			.forgot:hover{
-				background-color: lavender;
-				border-bottom: 4px solid #dc70fb;
-			}
-			.forgot a{
-				position: relative;
-				left: 8px;
-				color: black;
 			}
 			.no_register{
 				border: 2px solid #dc70fb;
@@ -248,30 +230,21 @@
 			<br>
 			<div class="container">
 				<div class="login">
-					<div class="username">
-						<form id="username_box" name="username_box" method="post">
+					<form id="login_box" name="login_box" method="post">
+						<div class="username">
 							<input id="num1" class="input_textbox" type="textbox" name="username" placeholder="Username" required>
-						</form>
-					</div>
-					<div class="password">
-						<form id="password_box" name="password_box" method="post">
+						</div>
+						<div class="password">
 							<input id="num2" class="input_textbox" type="password" name="password" placeholder="Password" required>
-						</form>
-					</div>
-					<span class="remember">
-						<form id="remember_box" name="remember_box" method="post">
+						</div>
+						<span class="remember">
 							<label>Remember Me</label>
 							<input id="num3" type="checkbox" name="remember">
-						</form>
-					</span>
-					<div class="actual">
-						<form id="login_box" name="login_box" method="post">
-							<button id="num4"><a href="" target="_blank">Login</a></button>
-						</form>
-					</div>
-					<div class="forgot">
-						<a href="" target="_blank">Forgot Password? Reset</a>
-					</div>
+						</span>
+						<div class="actual">
+							<button id="num4" type="submit">Login</button>
+						</div>
+					</form>
 				</div>
 			</div>
 			<br><br><br>
