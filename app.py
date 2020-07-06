@@ -95,6 +95,9 @@ def hello():
 @app.route("/profile")
 @login_required
 def profile():
+
+    return render_template("thanks.html",name=user_man.student_obj.row_dict["student_first_name"])
+
     big_string = ""
     info_dict = user_man.student_obj.row_dict
     for key in info_dict.keys():
