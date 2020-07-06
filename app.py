@@ -20,7 +20,7 @@ def load_user(user_id):
     return is_student(user_id,cur,conn)
 
 
-@app.route("/register",methods=["GET","POST"])
+@app.route("/",methods=["GET","POST"])
 def reg_student():
     print("in register route")
     student_username = request.form.get("student_username")
