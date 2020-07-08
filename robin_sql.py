@@ -26,7 +26,10 @@ def create_assignments_table():
 				course_id int, assignment_duration TIME, assignment_skills varchar);""")
 
 
-def register_student(in_dict,cur,conn):
+def register_student(in_dict):
+
+	cur,conn = curse()
+
 	if type(in_dict) is not dict:
 		raise TypeError
 
@@ -47,6 +50,7 @@ def register_student(in_dict,cur,conn):
 			student_school, student_grade, student_courses, student_dob) VALUES (%(student_username)s, %(student_pw)s,
 			%(student_first_name)s, %(student_last_name)s, %(student_email)s, %(student_phone)s,
 			%(student_school)s, %(student_grade)s, %(student_courses)s, %(student_dob)s);""",in_dict)
+		conn.close()
 		return 200
 	
 	except psycopg2.errors.UniqueViolation:
@@ -54,7 +58,9 @@ def register_student(in_dict,cur,conn):
 
 
 
-def register_parent(in_dict,cur,conn):
+def register_parent(in_dict):
+
+	cur,conn = curse()
 
 	if type(in_dict) is not dict:
 		raise TypeError
@@ -73,7 +79,10 @@ def register_parent(in_dict,cur,conn):
 				VALUES (%(parent_username)s,%(parent_pw)s,%(parent_first_name)s,%(parent_last_name)s,
 				%(parent_phone)s,%(parent_email)s, %(payment_status)s, %(plan_id)s, %(paid)s, %(end_total_cost)s,
 				%(student_username)s);""",in_dict)
+		cur,conn = curse()
+		return 200
 	except psycopg2.errors.UniqueViolation:
+		conn.close()
 		return "Account already created with that username or email"
 
 	except psycopg2.errors.ForeignKeyViolation as error:
@@ -85,7 +94,9 @@ def register_parent(in_dict,cur,conn):
 
 		return "Foreign Key Violation"
 
-def create_assignment(in_dict,cur,conn):
+def create_assignment(in_dict):
+
+	cur,conn = curse()
 
 	if type(in_dict) is not dict:
 		raise TypeError
@@ -102,17 +113,22 @@ def create_assignment(in_dict,cur,conn):
 		cur.execute("""INSERT INTO assignments (assignment_name, assignment_source, assignment_url,
 				course_id, assignment_duration , assignment_skills) VALUES (%(assignment_name)s,
 				%(assignment_source)s, %(assignment_url)s, %(course_id)s, %(assignment_duration)s , %(assignment_skills)s);""",in_dict)
+		conn.close()
 	except psycopg2.errors.ForeignKeyViolation as error:
 		error_msg = str(error)
 		if "course_id" in error:
+			conn.close()
 			return f"Course with id {in_dict['course_id']} has not been created"
 
-def create_course(course_name,fw_id,cur,conn):
+def create_course(course_name,fw_id):
+	cur,conn = curse()
 	if type(fw_id) is not int:
 		raise TypeError
 	try:
 		cur.execute("INSERT INTO courses (course_name, course_framework_id) VALUES (%s,%s);", (course_name,fw_id))
+		conn.close()
 	except psycopg2.errors.UniqueViolation:
+		conn.close()
 		return f"Course with name '{course_name}' already exists"
 
 
@@ -146,20 +162,27 @@ class Student:
 
 
 
-def student_info(student_username,cur,conn):
+def student_info(student_username):
+
+	cur,conn = curse()
+
 	cur.execute("SELECT * FROM students WHERE student_username=%s;",(student_username,))
 
 	all_rows = cur.fetchall()
+
+	conn.close()
 
 	if len(all_rows)==0 or len(all_rows[0])==0:
 		return None
 
 	return Student(all_rows[0])
 
-def assign(assignment_name,student_username,due_date,cur,conn):
+def assign(assignment_name,student_username,due_date):
+
+	cur,conn = curse()
 
 	# first pull student's current info, take the dictionary
-	student = student_info(student_username,cur,conn)
+	student = student_info(student_username)
 	assignments = student.row_dict["student_assignments"]
 
 	cur.execute("""SELECT assignment_name, assignment_score FROM assignments WHERE assignment_name=%s;""",(assignment_name,))
@@ -182,11 +205,15 @@ def assign(assignment_name,student_username,due_date,cur,conn):
 
 	cur.execute("UPDATE students SET student_assignments = %s WHERE student_username=%s;",(new_str,student_username))
 
+	conn.close()
 
-def mark_as_complete(student_username,assignment_name,grade,cur,conn):
+
+def mark_as_complete(student_username,assignment_name,grade):
+
+	cur,conn = curse()
 
 	# first pull student's current info, take the dictionary
-	student = student_info(student_username,cur,conn)
+	student = student_info(student_username)
 	assignments = student.row_dict["student_assignments"]
 
 	# check that assignment has been assigned to student
@@ -205,7 +232,7 @@ def mark_as_complete(student_username,assignment_name,grade,cur,conn):
 
 	cur.execute("UPDATE students SET student_assignments = %s WHERE student_username=%s;",(new_str,student_username))
 
-
+	conn.close()
 
 
 def opposite(char):
@@ -250,14 +277,14 @@ class User:
 		self.user_type = user_type
 		self.user_id = username
 		if user_type == "student":
-			self.student_obj = student_info(username,cur,conn)
+			self.student_obj = student_info(username)
 			if self.student_obj is None:
 				self.is_authenticated = False
 			else:
 				self.is_authenticated = True
 		elif user_type == "parent":
 			raise KeyError
-			self.parent_obj = student_info(username,cur,conn)
+			self.parent_obj = student_info(username)
 			if self.student_obj is None:
 				self.is_authenticated = False
 			else:
@@ -271,9 +298,11 @@ class User:
 		return self
 
 
-def is_student(username,cur,conn):
+def is_student(username):
+	cur,conn = curse()
 	cur.execute("SELECT * FROM students WHERE student_username=%s;",(username,))
 	matches = cur.fetchall()
+	conn.close()
 	if matches is None or len(matches) == 0:
 		return None
 	else:

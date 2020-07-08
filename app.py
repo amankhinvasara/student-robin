@@ -10,14 +10,12 @@ login_manager = LoginManager()
 
 app = Flask(__name__)
 
-cur,conn = curse()
-
 app.secret_key = "odf34jrj089942u9n.qn0i208r/132i9u86vqbnermmlmcvij"
 login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    return is_student(user_id,cur,conn)
+    return is_student(user_id)
 
 @app.route("/parent")
 def show_temp_parent():
@@ -43,6 +41,8 @@ def reg_student():
     
     # check if phone num is correct
     student_phone = request.form.get("student_phone").replace("(","").replace(")","").replace("-","")
+    if len(student_phone)==11 and student_phone[0]=="1":
+        student_phone = student_phone[1::]
     if len(student_phone)!=10:
         return render_template("register.html",error_msg="Please enter a ten-digit phone number")
 
@@ -65,13 +65,16 @@ def reg_student():
             "student_phone":student_phone, "student_school":student_school, "student_grade":student_grade, "student_courses":student_courses, "student_dob":student_dob} 
     print("in_dict created")
 
-    y = register_student(in_dict,cur,conn)
+    y = register_student(in_dict)
 
     print("register_student func completed")
 
     if y == 200:
         print("SUCCESS")
         flash("Succesfully Registered")
+        # send welcome email
+        import robin_email
+        robin_email.registered_student(student_email,student_first_name)
         return redirect(url_for("login"))
 
     else:
@@ -127,4 +130,4 @@ def logout():
     return redirect("https://www.robineducation.org")
 
 if __name__=="__main__":
-    app.run(debug=True,port=80,host="0.0.0.0",threaded=True)
+    app.run(debug=True,port=5000,host="0.0.0.0",threaded=True)
