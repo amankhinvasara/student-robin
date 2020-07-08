@@ -1,8 +1,6 @@
 
 import yagmail
 
-yag = yagmail.SMTP("robin@robineducation.org")
-
 def registered_student(student_email,student_first_name):
 	
 	subject = "Welcome to Robin Education!"
@@ -18,4 +16,5 @@ def registered_student(student_email,student_first_name):
 	<span style="color: blueviolet;">Founder, CEO | Robin Education</span>
 	408.205.8379"""
 
-	yag.send(student_email,subject,body)
+	with yagmail.SMTP("robin@robineducation.org","qptybbcjgdwbcxja") as yag:
+		yag.send(student_email,subject,body)
