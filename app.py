@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, session, redirect, url_for, flash, render_template
 from robin_sql import *
 from flask_login import LoginManager, login_required, login_user, logout_user
+import ssl
 
 #from flask.ext.security import login_required
 
@@ -129,5 +130,7 @@ def logout():
     logout_user()
     return redirect("https://www.robineducation.org")
 
+context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+context.load_cert_chain("/etc/letsencrypt/live/student.robineducation.org/fullchain.pem","/etc/letsencrypt/live/student.robineducation.org/privkey.pem")
 if __name__=="__main__":
-    app.run(debug=True,port=5000,host="0.0.0.0",threaded=True)
+    app.run(debug=True,port=443,host="0.0.0.0",threaded=True,ssl_context=context)
