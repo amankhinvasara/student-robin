@@ -16,5 +16,5 @@ def registered_student(student_email,student_first_name):
 	<span style="color: blueviolet;">Founder, CEO | Robin Education</span>
 	408.205.8379"""
 
-	with yagmail.SMTP("robin@robineducation.org","qptybbcjgdwbcxja") as yag:
+	with yagmail.SMTP("robin@robineducation.org",password) as yag:
 		yag.send(student_email,subject,body)
